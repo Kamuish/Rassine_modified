@@ -49,7 +49,7 @@ config = {}
 #  IMPORT CONFIG FILE
 # =============================================================================
 
-exec(open(Path(__file__).absolute() / 'Rassine_config.py').read())
+exec(open(Path(__file__).parent.absolute() / 'Rassine_config.py').read())
 
 spectrum_name = config['spectrum_name']
 output_dir = config['output_dir']
