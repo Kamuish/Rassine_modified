@@ -8,8 +8,7 @@ Created on Fri Nov 22 11:50:04 2019
 
 from __future__ import print_function
 import matplotlib
-matplotlib.use('Qt5Agg',force=True)
-import glob as glob 
+import glob as glob
 import Rassine_functions as ras      
 import numpy as np 
 import matplotlib.pylab as plt

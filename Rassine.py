@@ -22,7 +22,6 @@ from __future__ import print_function
 
 import matplotlib
 
-matplotlib.use('Qt5Agg',force=True)
 import getopt
 import os
 import sys
@@ -40,7 +39,8 @@ from scipy.special import erf
 
 import Rassine_functions as ras
 
-#get_ipython().run_line_magic('matplotlib','qt5')
+from pathlib import Path
+
 
 python_version = sys.version[0]
 config = {}
@@ -49,11 +49,7 @@ config = {}
 #  IMPORT CONFIG FILE
 # =============================================================================
 
-if python_version=='3':
-    exec(open('Rassine_config.py').read())
-elif python_version=='2':
-    execfile('Rassine_config.py')
-
+exec(open(Path(__file__).absolute() / 'Rassine_config.py').read())
 
 spectrum_name = config['spectrum_name']
 output_dir = config['output_dir']
