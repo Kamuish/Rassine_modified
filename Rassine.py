@@ -1778,7 +1778,10 @@ else:
 
 
 if light_version:
-    output = {'wave':grid,'flux':spectrei, 'flux_used':flux_used, 'output':basic, 'parameters':parameters}    
+    output = {'wave':grid,
+              'output':basic,
+              'parameters':parameters
+              }
 else:
     output = {'wave':grid, 'flux':spectrei, 'flux_used':flux_used, 'output':basic,
           'penality_map':penalite_step, 'penality':penalite0, 'parameters':parameters}
@@ -1786,6 +1789,7 @@ else:
 
 output['parameters']['filename'] = 'RASSINE_'+new_file+'.p'
 
+print(output_dir)
 ras.save_pickle(output_dir+'RASSINE_'+new_file+'.p',output)
 print('Ouput file saved under : %s (SNR at 5500 : %.0f)'%(output_dir+'RASSINE_'+new_file+'.p',output['parameters']['SNR_5500']))
 
