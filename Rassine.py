@@ -154,9 +154,7 @@ if len(sys.argv)>1:
     else:
         save_last_plot = False
 
-filename = spectrum_name.split('/')[-1]
-cut_extension = len(filename.split('.')[-1]) + 1
-new_file = filename[:-cut_extension]
+new_file = Path(spectrum_name).stem
 
 random_number = np.sum([ord(a) for a in filename.split('RASSINE_')[-1]])
 
@@ -1627,7 +1625,7 @@ if (feedback)|(plot_end)|(save_last_plot):
     plt.tick_params(direction='in',top=True,which='both')
     plt.subplots_adjust(left=0.07,right=0.96,hspace=0,top=0.95)
     if save_last_plot:
-        plt.savefig(output_dir+new_file+'_output.png')
+        plt.savefig(Path(output_dir) / (new_file+'_output.png'))
     if (feedback):
         plt.show(block=False)
         loop = ras.sphinx('Press Enter to finish the execution and save the final product')
@@ -1787,11 +1785,11 @@ else:
           'penality_map':penalite_step, 'penality':penalite0, 'parameters':parameters}
     
 
-output['parameters']['filename'] = 'RASSINE_'+new_file+'.p'
+output['parameters']['filename'] = f'RASSINE_{new_file}.p'
 
-print(output_dir)
-ras.save_pickle(output_dir+'RASSINE_'+new_file+'.p',output)
-print('Ouput file saved under : %s (SNR at 5500 : %.0f)'%(output_dir+'RASSINE_'+new_file+'.p',output['parameters']['SNR_5500']))
+storage_path = Path(output_dir) / f'RASSINE_{new_file}.p'
+ras.save_pickle(storage_path, output)
+print('Ouput file saved under : %s (SNR at 5500 : %.0f)'%(storage_path,output['parameters']['SNR_5500']))
 
 if False:
     ras.make_sound('Congratulations ! Racine has finished your spectra normalisation. Time to make science.')
