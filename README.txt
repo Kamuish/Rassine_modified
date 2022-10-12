@@ -1,3 +1,14 @@
+————————————————————————————————
+Modifications to original
+————————————————————————————————
+
+
+- No longer forcing the QT5 backend
+- allow to use code from outside the repo (i.e. fixed relative path issue to the config file)
+- No longer store the spectra and fluxes in the outputs (light_version), as we are only interested in the continuum
+
+
+
 ————————
 IMPORTANT INFORMATIONS :
 ————————
