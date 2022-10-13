@@ -156,7 +156,7 @@ if len(sys.argv)>1:
 
 new_file = Path(spectrum_name).stem
 
-random_number = np.sum([ord(a) for a in filename.split('RASSINE_')[-1]])
+random_number = np.sum([ord(a) for a in Path(spectrum_name).suffix])
 
 #to ignite the variable present after preprocessing
 
@@ -1788,7 +1788,8 @@ else:
 output['parameters']['filename'] = f'RASSINE_{new_file}.p'
 
 storage_path = Path(output_dir) / f'RASSINE_{new_file}.p'
-ras.save_pickle(storage_path, output)
+ras.save_pickle(storage_path.as_posix(), output)
+
 print('Ouput file saved under : %s (SNR at 5500 : %.0f)'%(storage_path,output['parameters']['SNR_5500']))
 
 if False:
