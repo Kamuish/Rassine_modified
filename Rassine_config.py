@@ -1,40 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Feb  7 16:34:29 2019
-19.04.19
-@author: michael cretignier & jémémie francfort
-
-# =====================================================================================
-# Rolling Alpha Shape for a Spectral Improved Normalisation Estimator (RASSINE)
-# =====================================================================================
-
-       ^                  .-=-.          .-==-.
-      {}      __        .' O o '.       /   ^  )
-     { }    .' O'.     / o .-. O \     /  .--`\
-     { }   / .-. o\   /O  /   \  o\   /O /    ^  (RASSSSSSINE)
-      \ `-` /   \ O`-'o  /     \  O`-`o /
-  jgs  `-.-`     '.____.'       `.____.'
-
-"""
-
 import os 
 cwd = os.getcwd()
 
 # =============================================================================
 #  ENTRIES
-# =============================================================================
-
-spectrum_name = cwd+'/spectra_library/spectrum_cenB.csv' # full path of your spectrum pickle/csv file
-output_dir  = cwd+'/output/'                             # directory where output files are written
-
+# ==========================================================================
+spectrum_name = '/home/amiguel/phd/tools/sBART_private/manual_tests/_Storage/SpecNorm/RASSINE/inputs/r.ESPRE.2022-07-06T09:22:31.285_S1D_A.csv'
+output_dir  = '/home/amiguel/phd/tools/sBART_private/manual_tests/_Storage/SpecNorm/RASSINE/outputs'  
 synthetic_spectrum = False   # True if working with a noisy-free synthetic spectra 
 anchor_file = ''             # Put a RASSINE output file that will fix the value of the 7 parameters to the same value than in the anchor file
 
 column_wave = 'wave'
 column_flux = 'flux'
 
-float_precision = 'float32' # float precision for the output products wavelength grid
+float_precision = 'float64' # float precision for the output products wavelength grid
 
 #general initial parameters
 
@@ -66,9 +44,9 @@ count_out_lim = 1       # number of outliers clipping in automatic mode (put at 
 interpolation = 'cubic' # define the interpolation for the continuum displayed in the subproducts            
                         # note that at the end a cubic and linear interpolation are saved in 'output' regardless this value
 
-feedback = True        # run the code without graphical feedback and interactions with the sphinx (only wishable if lot of spectra)     
+feedback = False        # run the code without graphical feedback and interactions with the sphinx (only wishable if lot of spectra)     
 only_print_end = False  # only print in the console the confirmation of RASSINE ending
-plot_end = True        # display the final product in the graphic
+plot_end = False        # display the final product in the graphic
 save_last_plot = False  # save the last graphical output (final output)
 
 
@@ -107,4 +85,5 @@ config = {'spectrum_name':spectrum_name,
           'outputs_interpolation_save':outputs_interpolation_saved,
           'outputs_denoising_save':outputs_denoising_saved,
           'light_file':light_version,
-          'speedup':1} 
+          'speedup':1}                     
+        
