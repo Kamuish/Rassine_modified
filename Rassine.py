@@ -1421,7 +1421,7 @@ flux_backup = flux.copy()
 index_backup = index.copy()
 criterion = 1
 
-for j in range(5):
+for number_of_iter in range(5):
     diff_x = np.log10(np.min(np.vstack([abs(np.diff(wave)[1:]),abs(np.diff(wave)[0:-1])]),axis=0))
     diff_diff_x = np.log10(abs(np.diff(np.diff(wave)))+1e-5)
     
@@ -1445,9 +1445,9 @@ for j in range(5):
         unique =  np.setdiff1d(mask_out_idx,np.hstack(cluster_idx))
         cluster_idx = list(cluster_idx)
         for j in unique:
-            cluster_idx += [np.array([j])] 
-        
-        mask_out_idx = [] 
+            cluster_idx += [np.array([j])]
+
+        mask_out_idx = []
         for j in cluster_idx:
             which = np.argmin(flux[j.astype('int')])
             mask_out_idx.append(j[which])
