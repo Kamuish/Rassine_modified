@@ -151,7 +151,7 @@ def clustering(array, tresh, num):
                 kept.append(array[border[j,0]:border[j,1]+2])
         return np.array(kept) 
     else:
-        return [[j] for j in array]
+        return [np.array([j]) for j in array]
 
 
 def create_grid(wave_min, dwave, nb_bins):
